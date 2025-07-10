@@ -1,0 +1,72 @@
+#include<bits/stdc++.h>
+using namespace std;
+extern map<string,int>Label_line_number;
+extern long long registers[];
+extern vector<int>breakpoints;
+extern string mem[];
+
+struct sstack{
+    string s;
+    int line;
+};
+struct cache{
+    vector<int> valid_bit;// 1 means valid block 0 means invalid block 
+    vector<int> Dirty;//here 1 means clean 0 means dirty
+    vector<int> Tag;
+    int set;
+    vector<vector<string>>no_of_blocks;
+};
+extern vector<string>access_lines;
+extern  vector<cache *> cache_mem;
+extern stack<sstack> gs;
+extern int cache_size;
+extern int Block_size;
+extern int Associtivity;
+extern int Associtivityf;
+extern string Replacement_Policy;
+extern string write_policy;
+extern int Hits;
+extern int Misses;
+extern int c12;
+extern int Total_Access;
+extern int Programcounter;
+extern int indicator;
+extern int dataadress;
+extern int cache_enabled;
+extern vector<int> breakpoint;
+bool islabel(string s);
+long long neg(unsigned long long x);
+int label_position(string s);
+void execute(map <int ,string>PC_Instruction,int x);
+void execute_one(string s,int);
+void display_register_values();
+string con_bin_to_hex(string s,int n);
+string con_hex_to_bin(string s);
+unsigned long long  string_to_number(string s, int y);
+string complement(string s);
+string number_binary(long long number, long long  no_of_bits);
+string twos_complement(string s);
+int register_number(string s);
+void execute_R(string s);
+void execute_IA(string s);
+void execute_Il(string s);
+void execute_S(string s);
+void execute_B(string s);
+void execute_J(string s);
+void execute_U(string s);
+void displaymem(string s,int x);
+void datasection(string s,int no_of_bytes);
+void memoryinitialisation();
+void showstack(stack <sstack> x);
+void initialise_cache();
+void cache_invaildate();
+void cache_details();
+void dumping(string s);
+void cache_allocate( int base_address,int sets);
+void Replacement(int base_address,int sets);
+void WRITE_TO_MEM(int base_address,int block_size,string data);
+string cachefetch(int base_address,int sets,int data_size);
+void cachewrite(int base_address,string s,int sets,int datasize);
+void cache_stats();
+void RegisterInitialisation();
+void cache_disable();
